@@ -64,7 +64,9 @@ def validate_draft(player):
     
     if  choice.isdigit():
         if int(choice) == player["draft"]:
-            print("\nOkay! You are a real Chiefs fan. - WELCOME TO CHIEFS KINGDOM!!!\n")       
+            print("\n*******************************************************************")
+            print("\n  Okay! You are a real Chiefs fan. - WELCOME TO CHIEFS KINGDOM!!!\n")
+            print("*******************************************************************")       
         else:
             print(f"The {choice} draft was not {player['name']}'s draft year. See! FAKE Chiefs fan!\n")
     else:
