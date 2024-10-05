@@ -1,3 +1,5 @@
+import os
+
 players = [
     {"name": "Patrick Mahomes", "draft": 2017, "college": ["Texas Tech", "TTU"], "jersey": 15},
     {"name": "Travis Kelce", "draft": 2013, "college": ["Cincinatti", "UC"], "jersey": 87},
@@ -16,19 +18,21 @@ players = [
     {"name": "Carson Steele", "draft": "undrafted", "college": ["Ball State", "BSU"], "jersey": 42}
 ]
 
+os.system("clear")
 print("\N{american football} Fake Chiefs Fan Finder \N{eyes}")
 print("----------------------------------\n")
 
 def validate_name():
-    choice = input("Who is your favorite Chiefs player?: ").capitalize()
-    
-    for player in players:
-        split_name = player["name"].split()
-        match = any(part.capitalize() in choice for part in split_name)
-        if match:
-            validate_jersey(player)
-            return player
-    print(f"Invalid response.\n")
+    while True:
+        choice = input("Who is your favorite Chiefs player?: ").capitalize()
+        
+        for player in players:
+            split_name = player["name"].split()
+            match = any(part.capitalize() in choice for part in split_name)
+            if match:
+                validate_jersey(player)
+                return player
+        print(f"{choice} not found. Try again\n")
 
 def validate_jersey(player):
     choice = input(f"\nOh really?! Well what's {player['name']}'s jersey number then?: ")
@@ -56,7 +60,7 @@ def validate_college(player):
     print(f"Wrong college for {player['name']}. See! FAKE Chiefs fan!\n")
 
 def validate_draft(player):
-    choice = input(f"\nHmph! Okay, one more. What year was {player['name']} drafted?: ").capitalize()
+    choice = input(f"\nHmph! Those were easy, here's a one more. What year was {player['name']} drafted?: ").capitalize()
     
     if  choice.isdigit():
         if int(choice) == player["draft"]:
