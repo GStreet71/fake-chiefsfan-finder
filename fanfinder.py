@@ -12,7 +12,7 @@ players = [
     {"name": "Nick Bolton", "draft": 2021, "college": ["Missouri", "MU"], "jersey": 32},
     {"name": "Justin Reid", "draft": 2018, "college": ["Stanford"], "jersey": 20},
     {"name": "Creed Humphries", "draft": 2021, "college": ["Oklahoma", "OU"], "jersey": 52},
-    {"name": "Geogre Karlaftis", "draft": 2022, "college": ["Purdue", "PU"], "jersey": 52},
+    {"name": "George Karlaftis", "draft": 2022, "college": ["Purdue", "PU"], "jersey": 52},
     {"name": "Joe Thuney", "draft": 2021, "college": ["Oklahoma", "OU"], "jersey": 52},
     {"name": "Kareem Hunt", "draft": 2017, "college": ["Toledo", "TU"], "jersey": 27},
     {"name": "Carson Steele", "draft": "undrafted", "college": ["Ball State", "BSU"], "jersey": 42}
@@ -60,7 +60,7 @@ def validate_college(player):
     print(f"Wrong college for {player['name']}. See! FAKE Chiefs fan!\n")
 
 def validate_draft(player):
-    choice = input(f"\nHmph! Those were easy, here's a one more. What year was {player['name']} drafted?: ").capitalize()
+    choice = input(f"\nHmph! Those were easy, last one. What year was {player['name']} drafted?: ").capitalize()
     
     if  choice.isdigit():
         if int(choice) == player["draft"]:
@@ -70,4 +70,8 @@ def validate_draft(player):
     else:
         print("Invalid response. Enter a valid draft year.\n")    
     
-validate_name()
+def main():
+    validate_name()
+
+if __name__ == '__main__':
+    main()
