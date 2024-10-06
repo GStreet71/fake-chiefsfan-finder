@@ -1,4 +1,5 @@
 import os
+from colorama import Fore, Style
 
 players = [
     {"name": "Patrick Mahomes", "draft": 2017, "college": ["Texas Tech", "TTU"], "jersey": 15},
