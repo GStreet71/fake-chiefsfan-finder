@@ -1,6 +1,8 @@
 import os
 from colorama import Fore, Style
 
+colors = [Fore.RED, Fore.WHITE, Fore.YELLOW]
+
 players = [
     {"name": "Patrick Mahomes", "draft": 2017, "college": ["Texas Tech", "TTU"], "jersey": 15},
     {"name": "Travis Kelce", "draft": 2013, "college": ["Cincinatti", "UC"], "jersey": 87},
@@ -15,7 +17,7 @@ players = [
     {"name": "Creed Humphries", "draft": 2021, "college": ["Oklahoma", "OU"], "jersey": 52},
     {"name": "George Karlaftis", "draft": 2022, "college": ["Purdue", "PU"], "jersey": 52},
     {"name": "Joe Thuney", "draft": 2021, "college": ["Oklahoma", "OU"], "jersey": 52},
-    {"name": "Kareem Hunt", "draft": 2017, "college": ["Toledo", "TU"], "jersey": 27},
+    {"name": "Kareem Hunt", "draft": 2017, "college": ["Toledo", "TU"], "jersey": 29},
     {"name": "Carson Steele", "draft": "undrafted", "college": ["Ball State", "BSU"], "jersey": 42}
 ]
 
@@ -43,7 +45,7 @@ def validate_jersey(player):
             validate_college(player)
             return player
         else:
-            print(f"Wrong. {choice} is not {player['name']}'s jersey neumber. See! FAKE Cheifs fan!\n")
+            print(Fore.RED + f"\nWrong. {choice} is not {player['name']}'s jersey neumber. See! FAKE Cheifs fan!\n" + Style.RESET_ALL)
     else:
         print("Invalid response. Enter a valid jersey number.\n")    
 
@@ -58,18 +60,20 @@ def validate_college(player):
             validate_draft(player)
             return
         
-    print(f"Wrong college for {player['name']}. See! FAKE Chiefs fan!\n")
+    print(Fore.RED + f"\nWrong college for {player['name']}. See! FAKE Chiefs fan!\n" + Style.RESET_ALL)
 
 def validate_draft(player):
     choice = input(f"\nHmph! Those were easy, last one. What year was {player['name']} drafted?: ").capitalize()
     
     if  choice.isdigit():
         if int(choice) == player["draft"]:
-            print("\n*******************************************************************")
-            print("\n  Okay! You are a real Chiefs fan. - WELCOME TO CHIEFS KINGDOM!!!\n")
-            print("*******************************************************************")       
+            for i in range(70):
+                print(colors[i % len(colors)] + "*", end="" + "\033[0m")
+            print(Style.RESET_ALL + "\n  Okay! You are a real Chiefs fan. - " + Fore.YELLOW + "WELCOME TO CHIEFS KINGDOM!!!\n")
+            for i in range(70):
+                print(colors[i % len(colors)] + "*", end="")     
         else:
-            print(f"The {choice} draft was not {player['name']}'s draft year. See! FAKE Chiefs fan!\n")
+            print(Fore.RED + f"\nThe {choice} draft was not {player['name']}'s draft year. See! FAKE Chiefs fan!\n" + Style.RESET_ALL)
     else:
         print("Invalid response. Enter a valid draft year.\n")    
     
